@@ -1,0 +1,3 @@
+[submodule "WarcMiddleware"]
+      path = WarcMiddleware
+      url = https://github.com/tigercosmos/WarcMiddleware.git
