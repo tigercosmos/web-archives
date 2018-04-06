@@ -23,7 +23,17 @@ pip install -r WarcMiddleware/pip_requirements.txt
 pip install git+https://github.com/ikreymer/pywb.git
 ```
 
+## Usage
+
+```sh
+# get and save as warc
+./scripts/getArchive.sh [Name] [URL]
+# extract warc to files
+./scripts/extracArchive.sh [Name]
+```
+
 ## Third Party Tools Documents
+
 - [pywb](https://pywb.readthedocs.io/en/latest/manual/usage.html)
 - [WarcMiddleware](https://github.com/tigercosmos/WarcMiddleware/)
 
@@ -32,4 +42,5 @@ pip install git+https://github.com/ikreymer/pywb.git
 [Alexa Top 1,000,000](http://s3.amazonaws.com/alexa-static/top-1m.csv.zip) at 2018/3/20
 
 ## License
+
 ISC
