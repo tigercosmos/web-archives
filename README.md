@@ -1,10 +1,10 @@
 # WEB ARCHIVES
 
-Web Archives Collection System 
+Web Archives Collection System
 
 ## Setup
 
-Ubuntu Version > 16.04: 
+Ubuntu Version > 16.04:
 
 ```sh
 # Get source
