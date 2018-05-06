@@ -673,6 +673,7 @@ def warc_records(string, path):
             print("parsing", filename)
             with WARCFile(path + filename) as warc_file:
                 for record in warc_file:
+                    args.output_path_sub = args.output_path + "/" + filename.split(".")[0] + "/"
                     yield record
 
 def checkFilter(filters, record):
@@ -695,7 +696,7 @@ def parse(args):
     if args.dump == "warc":
         if args.silence:
             print("Recording", args.dump, "to", args.output + ".")
-        with open(args.output_path + args.output, "wb"):
+        with open(args.output_path_sub + args.output, "wb"):
             pass
 
     for record in warc_records(args.string, args.path):
@@ -715,7 +716,7 @@ def parse(args):
 
             #Dump records to file.
             if args.dump == "warc":
-                with open(args.output_path + args.output, "ab") as output:
+                with open(args.output_path_sub + args.output, "ab") as output:
                     record.write_to(output)
 
             if args.dump == "content":
@@ -737,7 +738,7 @@ def parse(args):
                 #Final fixes.
                 path = path.replace(".", "-")
                 host = url.hostname.replace('www.', '', 1)
-                path = args.output_path + host + path
+                path = args.output_path_sub + host + path
 
                 #Create new directories
                 if not os.path.exists(path):
@@ -783,7 +784,7 @@ def parse(args):
             if args.error:
                 if args.silence:
                     print("Error in record. Recording to error.warc.")
-                with open(args.output_path + "error.warc", "ab") as fp:
+                with open(args.output_path_sub + "error.warc", "ab") as fp:
                     record.write_to(fp)
             else:
                 raise
@@ -803,6 +804,7 @@ if __name__ == "__main__":
     parser.add_argument("-string", default="", help="Regular expression to limit parsed warc files. Defaults to empty string.")
     parser.add_argument("-path", default="./", help="Path to folder containing warc files. Defaults to current folder.")
     parser.add_argument("-output_path", default="data/", help="Path to folder to dump content files. Defaults to data/ folder.")
+    parser.add_argument("-output_path_sub", default="/", help="sub path under output_path")    
     parser.add_argument("-output", default="output.warc", help="File to output warc contents. Defaults to 'output.warc'.")
     parser.add_argument("-dump", choices=['warc', 'content'], type=str, help="Dumps all entries that survived filter. 'warc' creates a filtered warc file. 'content' tries to reproduce file structure of archived websites.")
     args = parser.parse_args()

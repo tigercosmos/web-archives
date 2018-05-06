@@ -7,5 +7,5 @@ if [ -z $1 ]; then
     echo "./extractArchive.sh NAME"
 else
     ./scripts/warc-extractor.py -dump content -path "collections/$NAME/archive/" -output_path "./data/$NAME"
-    find ./data -name '*.gz' -exec gunzip '{}' \;
+    find ./data -name '*.gz' -exec gunzip -f '{}' \;
 fi
