@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 NAME=$1
 URL=$2
 if [ -z $2 ]:
@@ -7,7 +7,7 @@ then
     echo "sh ./getArchive.sh NAME \"URL\""
 else
     # enter virtual environment
-    source warcm_env/virt1/bin/activate
+    . "./warcm_env/virt1/bin/activate"
     # submodule WarcMiddleware
     cd WarcMiddleware
     python crawler.py --url $URL
