@@ -34,7 +34,7 @@ All sites list in `assets/alexa-*.csv`
 # save
 ./scripts/getArchiveAll.py
 # extract
-./scripts/extracArchiveAll.py
+./scripts/extractArchiveAll.py 
 ```
 
 ### For one site
